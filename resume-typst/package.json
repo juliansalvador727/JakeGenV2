@@ -1,0 +1,24 @@
+{
+  "name": "resume-typst",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "build:wasm": "wasm-pack build crates/typst_engine --target web --out-dir ../../wasm/typst_engine_pkg --out-name typst_engine",
+    "check:wasm": "test -f wasm/typst_engine_pkg/typst_engine_bg.wasm || (echo 'ERROR: WASM not found. Run npm run build:wasm first.' && exit 1)"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
+  }
+}
