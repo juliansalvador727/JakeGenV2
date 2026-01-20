@@ -4,7 +4,7 @@
  * Converts ResumeData JSON to LaTeX source using the Jake/sb2nov template.
  */
 
-import type { ResumeData, Education, Experience, Project, SkillCategory } from '../types/resume';
+import type { ResumeData, Education, Experience, Project, SkillCategory } from '../types/resume.js';
 import {
   escapeLatex,
   escapeLatexUrl,
@@ -13,7 +13,7 @@ import {
   cleanUrlForDisplay,
   filterEmptyBullets,
   formatBullet,
-} from './escape';
+} from './escape.js';
 
 // Read template - in Vercel serverless, we'll inline this
 // For local dev, we read from file

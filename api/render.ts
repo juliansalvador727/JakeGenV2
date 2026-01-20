@@ -12,8 +12,8 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { validateResumeData } from './types/resume';
-import { renderLatex } from './latex/render';
+import { validateResumeData } from './types/resume.js';
+import { renderLatex } from './latex/render.js';
 
 // YtoTech LaTeX-on-HTTP API endpoint
 const LATEX_API = 'https://latex.ytotech.com/builds/sync';
