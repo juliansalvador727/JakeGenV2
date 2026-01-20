@@ -82,7 +82,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const resumeData = validationResult.data;
 
     // Generate LaTeX source
-    const latexSource = renderLatex(resumeData);
+    let latexSource: string;
+    try {
+      latexSource = renderLatex(resumeData);
+    } catch (renderError) {
+      return res.status(500).json({
+        error: 'LaTeX rendering failed',
+        message: renderError instanceof Error ? renderError.message : 'Unknown error',
+        stack: renderError instanceof Error ? renderError.stack : undefined,
+      });
+    }
 
     // Check if client just wants LaTeX source (for debugging or client-side compilation)
     const returnLatex = req.headers['x-return-latex'] === 'true';
@@ -114,6 +123,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({
       error: 'Internal server error',
       message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
     });
   }
+}
+
+// Health check endpoint
+export async function GET(req: VercelRequest, res: VercelResponse) {
+  return res.status(200).json({ 
+    status: 'ok', 
+    message: 'API is running',
+    timestamp: new Date().toISOString()
+  });
 }
