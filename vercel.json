@@ -2,9 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "nodejs": {
-    "version": "20.x"
-  },
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.0.0",
