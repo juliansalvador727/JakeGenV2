@@ -8,11 +8,12 @@ A web-based resume generator that produces pixel-perfect PDFs using the popular 
 
 - **Pixel-perfect Jake's Resume styling** - Uses the official sb2nov LaTeX template
 - **Live PDF preview** - See changes as you type
-- **Client-side compilation** - No server required for PDF generation
+- **No LaTeX installation needed** - Uses latex.online API for compilation
 - **ATS-friendly output** - `\pdfgentounicode=1` ensures machine readability
 - **Export options** - Download PDF or LaTeX source
 - **Local storage** - Your resume is saved automatically
 - **JSON import/export** - Backup and restore your data
+- **Input validation** - Zod schemas ensure data integrity
 
 ## Architecture
 
@@ -91,13 +92,14 @@ See [DEPLOY.md](./DEPLOY.md) for detailed deployment instructions.
 ## Project Structure
 
 ```
-resume-typst/
+JakeGenV2/
 ├── api/                    # Vercel serverless functions
 │   ├── render.ts          # PDF generation endpoint
-│   └── latex/
-│       ├── escape.ts      # LaTeX character escaping
-│       ├── render.ts      # JSON → LaTeX conversion
-│       └── template.tex   # Jake's resume template
+│   ├── latex/
+│   │   ├── escape.ts      # LaTeX character escaping
+│   │   └── render.ts      # JSON → LaTeX conversion
+│   └── types/
+│       └── resume.ts      # Shared types & validation
 ├── src/
 │   ├── App.tsx            # Main application
 │   ├── data/
@@ -106,7 +108,7 @@ resume-typst/
 │   │   └── render-client.ts  # Client-side LaTeX renderer
 │   ├── lib/
 │   │   ├── api.ts         # API client
-│   │   └── latex-compiler.ts # WASM compiler wrapper
+│   │   └── latex-compiler.ts # latex.online API client
 │   ├── types/
 │   │   └── resume.ts      # Zod schemas & types
 │   └── ui/                # React components
@@ -150,35 +152,14 @@ Template settings:
 - Font: Computer Modern (LaTeX default)
 - ATS-compatible: `\pdfgentounicode=1`
 
-## Migration from Typst
+## How It Works
 
-If you were using the previous Typst-based version:
+1. **Form Input** - Edit your resume data in the React form interface
+2. **LaTeX Generation** - Data is converted to LaTeX source using the Jake's Resume template
+3. **PDF Compilation** - LaTeX is sent to latex.online API which compiles it to PDF
+4. **Preview** - PDF is displayed in-browser for immediate feedback
 
-### Files to Delete
-
-```
-/src/typst/              # Old Typst renderer
-/src/model/              # Old types (replaced by /src/types/)
-/crates/                 # Rust WASM crate
-/wasm/                   # Typst WASM output
-```
-
-### Data Compatibility
-
-The new data model is compatible with the old one, except:
-- `formatting` field is removed (Jake's template has fixed formatting)
-- Data is validated with Zod schemas
-
-Your saved resume JSON should still work. If you have a `formatting` field, it will be ignored.
-
-### Key Differences
-
-| Feature | Old (Typst) | New (LaTeX) |
-|---------|-------------|-------------|
-| Template | Custom Typst | sb2nov Jake's |
-| Compiler | Rust WASM | SwiftLaTeX WASM |
-| Formatting | Adjustable | Fixed |
-| Output | Similar to Jake | Identical to Jake |
+All compilation happens via the latex.online service - no local LaTeX installation needed!
 
 ## Validation Limits
 
@@ -200,4 +181,4 @@ MIT License - Based on [sb2nov/resume](https://github.com/sb2nov/resume)
 
 - Original LaTeX template: [Sourabh Bajaj](https://github.com/sb2nov)
 - Jake's modifications: [Jake Gutierrez](https://github.com/jakegut)
-- SwiftLaTeX: [SwiftLaTeX Team](https://github.com/SwiftLaTeX/SwiftLaTeX)
+- LaTeX compilation: [latex.online](https://latexonline.cc)
