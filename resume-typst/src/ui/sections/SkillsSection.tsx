@@ -1,4 +1,5 @@
-import { SkillCategory, createEmptySkillCategory } from '../../model/types';
+import type { SkillCategory } from '../../types/resume';
+import { createEmptySkillCategory } from '../../types/resume';
 
 interface SkillsSectionProps {
   data: SkillCategory[];
@@ -62,7 +63,7 @@ export function SkillsSection({ data, onChange }: SkillsSectionProps) {
                 className="btn-icon"
                 title="Move up"
               >
-                ↑
+                &#8593;
               </button>
               <button
                 type="button"
@@ -71,7 +72,7 @@ export function SkillsSection({ data, onChange }: SkillsSectionProps) {
                 className="btn-icon"
                 title="Move down"
               >
-                ↓
+                &#8595;
               </button>
               <button
                 type="button"
@@ -79,7 +80,7 @@ export function SkillsSection({ data, onChange }: SkillsSectionProps) {
                 className="btn-icon btn-remove"
                 title="Remove"
               >
-                ×
+                &#215;
               </button>
             </div>
           </div>

@@ -10,7 +10,7 @@ export function Preview({ pdfUrl, isLoading, error }: PreviewProps) {
       {isLoading && (
         <div className="preview-loading">
           <div className="spinner"></div>
-          <p>Generating PDF...</p>
+          <p>Compiling LaTeX...</p>
         </div>
       )}
       

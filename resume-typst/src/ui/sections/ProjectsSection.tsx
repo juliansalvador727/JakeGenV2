@@ -1,5 +1,5 @@
-import { Project, createEmptyProject } from '../../model/types';
-import { ValidationError, getFieldError } from '../../model/validate';
+import type { Project, ValidationError } from '../../types/resume';
+import { createEmptyProject, getFieldError } from '../../types/resume';
 
 interface ProjectsSectionProps {
   data: Project[];
@@ -80,7 +80,7 @@ export function ProjectsSection({ data, onChange, errors }: ProjectsSectionProps
                   className="btn-icon"
                   title="Move up"
                 >
-                  ↑
+                  &#8593;
                 </button>
                 <button
                   type="button"
@@ -89,7 +89,7 @@ export function ProjectsSection({ data, onChange, errors }: ProjectsSectionProps
                   className="btn-icon"
                   title="Move down"
                 >
-                  ↓
+                  &#8595;
                 </button>
                 <button
                   type="button"
@@ -97,7 +97,7 @@ export function ProjectsSection({ data, onChange, errors }: ProjectsSectionProps
                   className="btn-icon btn-remove"
                   title="Remove"
                 >
-                  ×
+                  &#215;
                 </button>
               </div>
             </div>
@@ -149,7 +149,7 @@ export function ProjectsSection({ data, onChange, errors }: ProjectsSectionProps
               </div>
               {proj.bullets.map((bullet, bulletIndex) => (
                 <div key={bulletIndex} className="bullet-row">
-                  <span className="bullet-marker">•</span>
+                  <span className="bullet-marker">&#8226;</span>
                   <input
                     type="text"
                     value={bullet}
@@ -163,7 +163,7 @@ export function ProjectsSection({ data, onChange, errors }: ProjectsSectionProps
                     className="btn-icon btn-remove"
                     title="Remove bullet"
                   >
-                    ×
+                    &#215;
                   </button>
                 </div>
               ))}

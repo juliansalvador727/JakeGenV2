@@ -1,5 +1,5 @@
-import { ContactInfo } from '../../model/types';
-import { ValidationError, getFieldError } from '../../model/validate';
+import type { ContactInfo, ValidationError } from '../../types/resume';
+import { getFieldError } from '../../types/resume';
 
 interface HeaderSectionProps {
   data: ContactInfo;

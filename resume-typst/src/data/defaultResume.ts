@@ -1,5 +1,9 @@
-import { ResumeData, generateId } from './types';
+import type { ResumeData } from '../types/resume';
+import { generateId } from '../types/resume';
 
+/**
+ * Default resume data - Jake's example from sb2nov template
+ */
 export const defaultResume: ResumeData = {
   header: {
     name: 'Jake Ryan',
@@ -8,42 +12,6 @@ export const defaultResume: ResumeData = {
     linkedin: 'linkedin.com/in/jake',
     github: 'github.com/jake',
     website: undefined,
-  },
-  formatting: {
-    // Page settings
-    marginLeft: 0.5,
-    marginRight: 0.5,
-    marginTop: 0.5,
-    marginBottom: 0.5,
-    
-    // Typography
-    baseFontSize: 11,
-    parLeading: 0.65,
-    
-    // Header
-    nameFontSize: 26,
-    nameSpacing: 1,
-    contactFontSize: 10,
-    contactSpacing: 0.3,
-    
-    // Sections
-    sectionFontSize: 12,
-    sectionSpaceBefore: -4,
-    sectionSpaceAfter1: -5,
-    sectionSpaceAfter2: -5,
-    
-    // Subheadings
-    subheadingSpaceBefore: -2,
-    subheadingSpaceAfter: -7,
-    
-    // Items
-    itemFontSize: 10,
-    itemSpacing: -2,
-    blockSpaceAfter: -5,
-    
-    // Layout
-    listIndent: 0.15,
-    gridWidth: 97,
   },
   education: [
     {
@@ -58,7 +26,7 @@ export const defaultResume: ResumeData = {
       id: generateId(),
       school: 'Blinn College',
       location: 'Bryan, TX',
-      degree: 'Associate\'s in Liberal Arts',
+      degree: "Associate's in Liberal Arts",
       dates: 'Aug. 2014 -- May 2018',
       extra: undefined,
     },
@@ -98,7 +66,7 @@ export const defaultResume: ResumeData = {
         'Explored methods to generate video game dungeons based off of The Legend of Zelda',
         'Developed a game in Java to test the generated dungeons',
         'Contributed 50K+ lines of code to an established codebase via Git',
-        'Conducted  a human subject study to determine which video game dungeon generation technique is enjoyable',
+        'Conducted a human subject study to determine which video game dungeon generation technique is enjoyable',
         'Wrote an 8-page paper and gave multiple presentations on-campus',
         'Presented virtually to the World Conference on Computational Intelligence',
       ],
@@ -112,7 +80,7 @@ export const defaultResume: ResumeData = {
       dates: 'June 2020 -- Present',
       bullets: [
         'Developed a full-stack web application using with Flask serving a REST API with React as the frontend',
-        'Implemented GitHub OAuth to get data from user\'s repositories',
+        "Implemented GitHub OAuth to get data from user's repositories",
         'Visualized GitHub data to show collaboration',
         'Used Celery and Redis for asynchronous tasks',
       ],
@@ -126,7 +94,7 @@ export const defaultResume: ResumeData = {
         'Developed a Minecraft server plugin to entertain kids during free time for a previous job',
         'Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review',
         'Implemented continuous delivery using TravisCI to build the plugin upon new a release',
-        'Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin'
+        'Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin',
       ],
     },
   ],

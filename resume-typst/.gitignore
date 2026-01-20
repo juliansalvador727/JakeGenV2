@@ -3,9 +3,7 @@ node_modules/
 
 # Build outputs
 dist/
-
-# Rust/Cargo build cache
-crates/typst_engine/target/
+.vercel/
 
 # IDE
 .vscode/
@@ -26,6 +24,8 @@ npm-debug.log*
 .env.local
 .env.*.local
 
-# Note: wasm/typst_engine_pkg/ is NOT ignored - it must be committed!
-*.md
-!README.md
+# Old Typst files (can be deleted)
+crates/
+wasm/
+src/typst/
+src/model/

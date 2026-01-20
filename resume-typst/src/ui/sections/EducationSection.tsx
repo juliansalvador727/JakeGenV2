@@ -1,5 +1,5 @@
-import { Education, createEmptyEducation } from '../../model/types';
-import { ValidationError, getFieldError } from '../../model/validate';
+import type { Education, ValidationError } from '../../types/resume';
+import { createEmptyEducation, getFieldError } from '../../types/resume';
 
 interface EducationSectionProps {
   data: Education[];
@@ -64,7 +64,7 @@ export function EducationSection({ data, onChange, errors }: EducationSectionPro
                   className="btn-icon"
                   title="Move up"
                 >
-                  ↑
+                  &#8593;
                 </button>
                 <button
                   type="button"
@@ -73,7 +73,7 @@ export function EducationSection({ data, onChange, errors }: EducationSectionPro
                   className="btn-icon"
                   title="Move down"
                 >
-                  ↓
+                  &#8595;
                 </button>
                 <button
                   type="button"
@@ -82,7 +82,7 @@ export function EducationSection({ data, onChange, errors }: EducationSectionPro
                   className="btn-icon btn-remove"
                   title="Remove"
                 >
-                  ×
+                  &#215;
                 </button>
               </div>
             </div>

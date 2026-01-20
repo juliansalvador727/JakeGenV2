@@ -1,5 +1,5 @@
-import { Experience, createEmptyExperience } from '../../model/types';
-import { ValidationError, getFieldError } from '../../model/validate';
+import type { Experience, ValidationError } from '../../types/resume';
+import { createEmptyExperience, getFieldError } from '../../types/resume';
 
 interface ExperienceSectionProps {
   data: Experience[];
@@ -81,7 +81,7 @@ export function ExperienceSection({ data, onChange, errors }: ExperienceSectionP
                   className="btn-icon"
                   title="Move up"
                 >
-                  ↑
+                  &#8593;
                 </button>
                 <button
                   type="button"
@@ -90,7 +90,7 @@ export function ExperienceSection({ data, onChange, errors }: ExperienceSectionP
                   className="btn-icon"
                   title="Move down"
                 >
-                  ↓
+                  &#8595;
                 </button>
                 <button
                   type="button"
@@ -98,7 +98,7 @@ export function ExperienceSection({ data, onChange, errors }: ExperienceSectionP
                   className="btn-icon btn-remove"
                   title="Remove"
                 >
-                  ×
+                  &#215;
                 </button>
               </div>
             </div>
@@ -164,7 +164,7 @@ export function ExperienceSection({ data, onChange, errors }: ExperienceSectionP
               </div>
               {exp.bullets.map((bullet, bulletIndex) => (
                 <div key={bulletIndex} className="bullet-row">
-                  <span className="bullet-marker">•</span>
+                  <span className="bullet-marker">&#8226;</span>
                   <input
                     type="text"
                     value={bullet}
@@ -178,7 +178,7 @@ export function ExperienceSection({ data, onChange, errors }: ExperienceSectionP
                     className="btn-icon btn-remove"
                     title="Remove bullet"
                   >
-                    ×
+                    &#215;
                   </button>
                 </div>
               ))}

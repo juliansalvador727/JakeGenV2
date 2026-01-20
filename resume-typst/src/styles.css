@@ -112,6 +112,12 @@ body {
   background: var(--color-bg);
 }
 
+.btn-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
 .btn-add {
   font-size: 12px;
   padding: 4px 10px;
@@ -444,6 +450,30 @@ input.error:focus {
 .preview-placeholder {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
+}
+
+/* LaTeX Preview */
+.latex-preview {
+  height: 100%;
+  overflow: auto;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 16px;
+}
+
+.latex-preview h3 {
+  color: #fff;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.latex-preview pre {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* Responsive */

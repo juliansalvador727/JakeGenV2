@@ -1,24 +1,26 @@
-import { ResumeData } from '../model/types';
+import type { ResumeData } from '../types/resume';
 
 interface ToolbarProps {
-  pdfUrl: string | null;
   resumeData: ResumeData;
   onReset: () => void;
   onImport: (data: ResumeData) => void;
+  onDownload: () => void;
+  onDownloadLatex: () => void;
+  showLatex: boolean;
+  onToggleLatex: () => void;
+  canDownload: boolean;
 }
 
-export function Toolbar({ pdfUrl, resumeData, onReset, onImport }: ToolbarProps) {
-  const handleDownload = () => {
-    if (!pdfUrl) return;
-    
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.download = `${resumeData.header.name || 'resume'}.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
+export function Toolbar({ 
+  resumeData, 
+  onReset, 
+  onImport, 
+  onDownload, 
+  onDownloadLatex,
+  showLatex,
+  onToggleLatex,
+  canDownload 
+}: ToolbarProps) {
   const handleCopyJson = async () => {
     try {
       await navigator.clipboard.writeText(JSON.stringify(resumeData, null, 2));
@@ -62,17 +64,34 @@ export function Toolbar({ pdfUrl, resumeData, onReset, onImport }: ToolbarProps)
     <div className="toolbar">
       <div className="toolbar-title">
         <h1>Resume Generator</h1>
-        <span className="subtitle">Jake's Style • Typst + WASM</span>
+        <span className="subtitle">Jake's Style (sb2nov) - LaTeX + WASM</span>
       </div>
       
       <div className="toolbar-actions">
         <button
-          onClick={handleDownload}
-          disabled={!pdfUrl}
+          onClick={onDownload}
+          disabled={!canDownload}
           className="btn btn-primary"
           title="Download PDF"
         >
-          📄 Download PDF
+          Download PDF
+        </button>
+        
+        <button
+          onClick={onDownloadLatex}
+          disabled={!canDownload}
+          className="btn"
+          title="Download LaTeX source"
+        >
+          Download .tex
+        </button>
+        
+        <button
+          onClick={onToggleLatex}
+          className={`btn ${showLatex ? 'btn-active' : ''}`}
+          title="Toggle LaTeX preview"
+        >
+          {showLatex ? 'Show PDF' : 'Show LaTeX'}
         </button>
         
         <button
@@ -80,7 +99,7 @@ export function Toolbar({ pdfUrl, resumeData, onReset, onImport }: ToolbarProps)
           className="btn"
           title="Copy JSON to clipboard"
         >
-          📋 Copy JSON
+          Copy JSON
         </button>
         
         <button
@@ -88,7 +107,7 @@ export function Toolbar({ pdfUrl, resumeData, onReset, onImport }: ToolbarProps)
           className="btn"
           title="Import from JSON"
         >
-          📥 Import JSON
+          Import JSON
         </button>
         
         <button
@@ -96,7 +115,7 @@ export function Toolbar({ pdfUrl, resumeData, onReset, onImport }: ToolbarProps)
           className="btn btn-secondary"
           title="Reset to sample data"
         >
-          🔄 Reset
+          Reset
         </button>
       </div>
     </div>
