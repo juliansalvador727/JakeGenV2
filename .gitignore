@@ -29,3 +29,6 @@ crates/
 wasm/
 src/typst/
 src/model/
+
+*.md
+!README.md

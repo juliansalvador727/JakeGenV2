@@ -1,6 +1,8 @@
 # Resume Generator - LaTeX Edition
 
-A web-based resume generator that produces pixel-perfect PDFs using the popular Jake's Resume template (sb2nov). Built with React, TypeScript, and WebAssembly-based LaTeX compilation.
+A web-based resume generator that produces pixel-perfect PDFs using the popular Jake's Resume template (sb2nov). Built with React, TypeScript, and LaTeX compilation.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/YOUR_REPO)
 
 ## Features
 
@@ -70,18 +72,21 @@ npm run preview
 
 ## Deploying to Vercel
 
-1. Push your code to GitHub
-2. Import the project in Vercel
-3. Deploy!
-
-Or use the Vercel CLI:
+**Quick Deploy:**
 
 ```bash
 npm i -g vercel
-vercel
+vercel --prod
 ```
 
-The app works entirely client-side by default. The `/api/render` endpoint is optional and uses the latex.online service for server-side compilation.
+Or import from GitHub at [vercel.com/new](https://vercel.com/new)
+
+See [DEPLOY.md](./DEPLOY.md) for detailed deployment instructions.
+
+**What gets deployed:**
+- Frontend: Static React SPA served from Vercel CDN
+- API: `/api/render` as a serverless function
+- No environment variables needed!
 
 ## Project Structure
 
