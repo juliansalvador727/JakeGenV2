@@ -4,7 +4,7 @@
  * Converts ResumeData JSON to LaTeX source using the Jake/sb2nov template.
  */
 
-import type { ResumeData, Education, Experience, Project, SkillCategory } from '../../src/types/resume';
+import type { ResumeData, Education, Experience, Project, SkillCategory } from '../types/resume';
 import {
   escapeLatex,
   escapeLatexUrl,

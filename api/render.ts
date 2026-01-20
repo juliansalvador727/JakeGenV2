@@ -12,7 +12,7 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { ResumeDataSchema, validateResumeData } from '../src/types/resume';
+import { validateResumeData } from './types/resume';
 import { renderLatex } from './latex/render';
 
 // YtoTech LaTeX-on-HTTP API endpoint
